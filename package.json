@@ -1,0 +1,29 @@
+{
+  "name": "the_beth_stack",
+  "version": "1.0.50",
+  "module": "src/index.tsx",
+  "dependencies": {
+    "@elysiajs/cors": "^0.8.0",
+    "@elysiajs/html": "^0.8.0",
+    "@libsql/client": "^0.5.1",
+    "ansis": "^2.3.0",
+    "drizzle-orm": "^0.29.4",
+    "elysia": "latest"
+  },
+  "scripts": {
+    "test": "NODE_ENV=test bun test ./test/**.test.tsx",
+    "dev": "bun run tailwind:dev | bun run elxsia:dev",
+    "elxsia:dev": "NODE_ENV=development bun --env-file=.env run --watch src/index.tsx",
+    "build": "bun run tailwind:build",
+    "start": "NODE_ENV=production bun --env-file=.env run src/index.tsx",
+    "tailwind:build": "bunx tailwindcss -i ./src/style.css -o ./public/style.css --minify",
+    "tailwind:dev": "bunx tailwindcss -i ./src/style.css -o ./public/style.css --watch",
+    "db:push": "drizzle-kit push:sqlite",
+    "db:studio": "drizzle-kit studio"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.7",
+    "drizzle-kit": "^0.20.14",
+    "tailwindcss": "^3.4.1"
+  }
+}
